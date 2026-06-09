@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessible Photo Gallery</title>
+<link rel="stylesheet" href="style.css">
+<script>
+function upDate(previewPic){
+    console.log("focus/hover");
+    document.getElementById("image").style.backgroundImage="url('" + previewPic.src + "')";
+    document.getElementById("image").innerHTML=previewPic.alt;
+}
+function unDo(){
+    console.log("blur/mouseleave");
+    document.getElementById("image").style.backgroundImage="";
+    document.getElementById("image").innerHTML="Hover over or focus on an image below.";
+}
+window.onload=function(){
+    let images=document.querySelectorAll(".gallery img");
+    for(let i=0;i<images.length;i++){
+        images[i].setAttribute("tabindex","0");
+    }
+}
+</script>
+</head>
+<body>
+<h1>Accessible Photo Gallery</h1>
+<div id="image" class="card">Hover over or focus on an image below.</div>
+
+<div class="gallery flex">
+<img src="https://picsum.photos/300/200?11" alt="Mountain landscape" onmouseover="upDate(this)" onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+<img src="https://picsum.photos/300/200?12" alt="Forest path" onmouseover="upDate(this)" onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+<img src="https://picsum.photos/300/200?13" alt="Lake view" onmouseover="upDate(this)" onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+<img src="https://picsum.photos/300/200?14" alt="Sunset sky" onmouseover="upDate(this)" onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+<img src="https://picsum.photos/300/200?15" alt="River valley" onmouseover="upDate(this)" onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+<img src="https://picsum.photos/300/200?16" alt="Wild flowers" onmouseover="upDate(this)" onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+</div>
+</body>
+</html>
